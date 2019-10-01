@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exceptions
+namespace DAY3
 {
-    class CalculatorException : Exception
+    class UserException : Exception
     {
-        public CalculatorException(string message) : base(message)
+        public UserException(string message) : base(message)
         {
-            
+
         }
     }
 }
