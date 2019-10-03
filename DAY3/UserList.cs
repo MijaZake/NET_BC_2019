@@ -14,17 +14,19 @@ namespace DAY3
         {
             //parbaudes
             //1. Datums nedrikst but nakotne
-            //2. Datums nedrikst but mazaks par 01.01.1800
-            //3. Pilnais vards nedrikst parsniegt 20 simbolus
             if (date > DateTime.Now)
             {
                 throw new UserException("");
             }
+
+            //2. Datums nedrikst but mazaks par 01.01.1800
             DateTime limit = new DateTime(01, 01, 1800);
             if (date < limit)
             {
                 throw new UserException("");
             }
+
+            //3. Pilnais vards nedrikst parsniegt 20 simbolus
             if (fullName.Length > 20)
                 {
                 throw new UserException("");
