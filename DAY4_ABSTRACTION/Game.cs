@@ -12,24 +12,37 @@ namespace DAY4_ABSTRACTION
         IPlayer PlayerOne;
         IPlayer PlayerTwo;
 
-        void StartNewGame()
+        public void StartNewGame()
         {
-            //Random rnd = new Random();
-            //int[] numbers = { };
+            Random rnd = new Random();
+            CurrentNumber = rnd.Next(1, 500);
+            PlayerOne = new User();
+            PlayerTwo = new Robot();
         }
 
-        void Loop()
+        public void Loop()
         {
             while(true)
             {
-                Console.Write("Guess the number: ");
-                CurrentNumber = int.Parse(Console.ReadLine());
+                PlayerTurn(PlayerOne);
+                if (PlayerOne.IsNumberGuessed(CurrentNumber))
+                {
+                    Console.WriteLine("Player 1 wins!");
+                    break;
+                }
+
+                PlayerTurn(PlayerTwo);
+                if (PlayerTwo.IsNumberGuessed(CurrentNumber))
+                {
+                    Console.WriteLine("Player 2 wins!");
+                    break;
+                }
             }
         }
 
         void PlayerTurn(IPlayer player)
         {
-
+            player.GuessNumber();
         }
     }
 }

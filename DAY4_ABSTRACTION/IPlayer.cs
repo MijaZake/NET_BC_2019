@@ -9,5 +9,7 @@ namespace DAY4_ABSTRACTION
     interface IPlayer
     {
         int GuessNumber();
+        bool IsNumberGuessed(int number);
+        string GetName();
     }
 }

@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8FA581D7-F21A-490E-B1F1-9BF2D83C6098}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DAY3</RootNamespace>
-    <AssemblyName>DAY3</AssemblyName>
+    <ProjectGuid>{1CB27303-DE8B-4839-810B-E491B1D968D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConsoleHelper</RootNamespace>
+    <AssemblyName>ConsoleHelper</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,20 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BaseConsoleReader.cs" />
+    <Compile Include="ConsoleInput.cs" />
+    <Compile Include="DateReader.cs" />
+    <Compile Include="IntegerReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserException.cs" />
-    <Compile Include="UserList.cs" />
-    <Compile Include="UserProfile.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConsoleHelper\ConsoleHelper.csproj">
-      <Project>{1cb27303-de8b-4839-810b-e491b1d968d0}</Project>
-      <Name>ConsoleHelper</Name>
-    </ProjectReference>
+    <Compile Include="TextReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

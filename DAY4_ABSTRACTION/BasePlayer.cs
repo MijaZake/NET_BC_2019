@@ -8,22 +8,20 @@ namespace DAY4_ABSTRACTION
 {
     abstract class BasePlayer : IPlayer
     {
-        string Name;
-        int CurrentGuess;
+        public string Name;
+        public int CurrentGuess;
 
-        bool IsNumberGuessed(int number)
+        public BasePlayer()
         {
-
+            Name = GetName();
         }
 
-        abstract string GetName()
+        public abstract string GetName();
+        public abstract int GuessNumber();
+
+        public virtual bool IsNumberGuessed(int number)
         {
-
-        }
-
-        public int GuessNumber()
-        {
-
+                return number == CurrentGuess;
         }
     }
 }
