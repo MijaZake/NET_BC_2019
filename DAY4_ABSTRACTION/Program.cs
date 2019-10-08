@@ -10,9 +10,20 @@ namespace DAY4_ABSTRACTION
     {
         static void Main(string[] args)
         {
-            Game game = new Game();
-            game.StartNewGame();
-            game.Loop();
+            try
+            {
+                Game game = new Game();
+                game.StartNewGame();
+                game.Loop();
+            }
+            catch (LimitException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected error! {0}", ex.Message);
+            }
 
             Console.Read();
         }

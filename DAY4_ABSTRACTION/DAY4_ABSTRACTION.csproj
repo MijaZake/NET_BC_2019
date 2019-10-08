@@ -46,6 +46,7 @@
     <Compile Include="BasePlayer.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="IPlayer.cs" />
+    <Compile Include="LimitException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot.cs" />
@@ -53,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleHelper\ConsoleHelper.csproj">
+      <Project>{1cb27303-de8b-4839-810b-e491b1d968d0}</Project>
+      <Name>ConsoleHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

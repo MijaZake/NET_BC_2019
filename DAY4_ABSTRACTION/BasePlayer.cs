@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAY4_ABSTRACTION
 {
-    abstract class BasePlayer : IPlayer
+    public abstract class BasePlayer : IPlayer
     {
-        public string Name;
-        public int CurrentGuess;
+        protected string Name;
+        protected int CurrentGuess;
+        protected int NextGuess;
 
         public BasePlayer()
         {
@@ -21,7 +22,18 @@ namespace DAY4_ABSTRACTION
 
         public virtual bool IsNumberGuessed(int number)
         {
-                return number == CurrentGuess;
+            if (number > CurrentGuess)
+            {
+                Console.WriteLine("Number is too small!");
+                NextGuess = 1;
+            }
+            if (number < CurrentGuess)
+            {
+                Console.WriteLine("Number is too big!");
+                NextGuess = -1;
+            }
+
+            return number == CurrentGuess;
         }
     }
 }

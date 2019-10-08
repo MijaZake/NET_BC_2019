@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAY4_ABSTRACTION
 {
-    public interface IPlayer
+    class LimitException : Exception
     {
-        int GuessNumber();
-        bool IsNumberGuessed(int number);
-        string GetName();
+        public LimitException(string message) : base(message)
+        {
+                
+        }
     }
 }

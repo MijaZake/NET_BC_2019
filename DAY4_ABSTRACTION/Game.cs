@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace DAY4_ABSTRACTION
 {
-    class Game
+    public class Game
     {
-        int CurrentNumber;
-        IPlayer PlayerOne;
-        IPlayer PlayerTwo;
+        private int CurrentNumber;
+        private IPlayer PlayerOne;
+        private IPlayer PlayerTwo;
 
         public void StartNewGame()
         {
-            Random rnd = new Random();
-            CurrentNumber = rnd.Next(1, 500);
+            CurrentNumber = new Random().Next(1, 500);
             PlayerOne = new User();
             PlayerTwo = new Robot();
         }
@@ -24,25 +23,31 @@ namespace DAY4_ABSTRACTION
         {
             while(true)
             {
-                PlayerTurn(PlayerOne);
-                if (PlayerOne.IsNumberGuessed(CurrentNumber))
+                Console.Write("P1: ");
+                if (PlayerTurn(PlayerOne))
                 {
-                    Console.WriteLine("Player 1 wins!");
                     break;
                 }
 
-                PlayerTurn(PlayerTwo);
-                if (PlayerTwo.IsNumberGuessed(CurrentNumber))
+                Console.Write("P2: ");
+                if (PlayerTurn(PlayerTwo))
                 {
-                    Console.WriteLine("Player 2 wins!");
                     break;
                 }
             }
         }
 
-        void PlayerTurn(IPlayer player)
+        private bool PlayerTurn(IPlayer player)
         {
             player.GuessNumber();
+            bool isGuessed = player.IsNumberGuessed(CurrentNumber);
+
+            if (isGuessed)
+            {
+                Console.WriteLine("Player {0} wins!", player.GetName());
+            }
+
+            return isGuessed;
         }
     }
 }

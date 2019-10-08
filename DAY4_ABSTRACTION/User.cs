@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleHelper;
 
 namespace DAY4_ABSTRACTION
 {
-    class User : BasePlayer
+    public class User : BasePlayer
     {
         public override string GetName()
         {
-            Console.Write("Please enter your name: ");
-            string input = Console.ReadLine();
-
-            return input;
+            if (!String.IsNullOrEmpty(Name))
+            {
+                return Name;
+            }
+            
+            return ConsoleInput.GetText("Please enter your name: ");
         }
 
         public override int GuessNumber()
         {
-            Console.Write("Enter a positive integer: ");
-            CurrentGuess = int.Parse(Console.ReadLine());
+            CurrentGuess = ConsoleInput.GetInt("Enter a positive integer: ");
+            if (CurrentGuess > 500 || CurrentGuess < 1)
+            {
+                throw new LimitException("Number out of limits! [1-500]");
+            }
 
             return CurrentGuess;
         }
