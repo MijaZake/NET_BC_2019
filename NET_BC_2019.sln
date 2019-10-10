@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAY4_ABSTRACTION", "DAY4_AB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHelper", "ConsoleHelper\ConsoleHelper.csproj", "{1CB27303-DE8B-4839-810B-E491B1D968D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackjack", "Blackjack\Blackjack.csproj", "{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1CB27303-DE8B-4839-810B-E491B1D968D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB27303-DE8B-4839-810B-E491B1D968D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB27303-DE8B-4839-810B-E491B1D968D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
