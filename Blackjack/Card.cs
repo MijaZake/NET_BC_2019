@@ -15,11 +15,11 @@ namespace Blackjack
         public Card(string suit, string rank)
         {
             Suit = suit;
-            Rank = rank;S
+            Rank = rank;
         }
 
         //returns card's title (eg Karava 10)
-        public string GetTitle(Card card)
+        public string GetTitle()
         {
             string rank;
             string suit;
@@ -39,7 +39,7 @@ namespace Blackjack
                     rank = "Ace";
                     break;
                 default:
-                    rank = card.Rank;
+                    rank = Rank;
                     break;
             }
 
@@ -57,10 +57,12 @@ namespace Blackjack
                 case "H":
                     suit = "Hearts";
                     break;
+                default:
+                    suit = Suit;
+                    break;
             }
 
-
-            return "{rank} of {suit}";
+            return rank + " of " + suit;
         }
 
         //returns card's value (11 ace, 10 face cards, numeric value for others)

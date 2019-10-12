@@ -47,7 +47,7 @@ namespace Blackjack
             return CountPoints() > 21;
         }
         //player receives a new card from the deck, adds to hand
-        public void GiveCard(Card card)
+        public virtual void GiveCard(Card card)
         {
             Cards.Add(card);
         }
@@ -56,4 +56,4 @@ namespace Blackjack
         public abstract bool WantCard();
     }
 }
-}
+

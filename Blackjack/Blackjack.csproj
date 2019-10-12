@@ -56,5 +56,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleHelper\ConsoleHelper.csproj">
+      <Project>{1CB27303-DE8B-4839-810B-E491B1D968D0}</Project>
+      <Name>ConsoleHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

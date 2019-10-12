@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleHelper;
 
 namespace Blackjack
 {
@@ -10,27 +11,23 @@ namespace Blackjack
     {
         public override string GetName()
         {
-            Console.Write("Name: ");
-            return Console.ReadLine();
+            if (!String.IsNullOrEmpty(Name))
+            {
+                return Name;
+            }
+            return ConsoleInput.GetText("Enter your name: ");
         }
 
         public override bool WantCard()
         {
-            Console.Write("Draw another card? (y/n)");
-            string input = Console.ReadLine().ToLower();
-            if (input == "y")
-            {
-                return true;
-            }
-            else if (input == "n")
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Invalid answer!");
-                return WantCard();
-            }
+            return ConsoleInput.GetBool("Another card? ");
+        }
+
+        public override void GiveCard(Card card)
+        {
+            base.GiveCard(card);
+            Console.WriteLine("You received card: {0}", card.GetTitle());
+            Console.WriteLine("Your points: {0}", CountPoints());
         }
     }
 }

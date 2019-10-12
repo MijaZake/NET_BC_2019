@@ -17,12 +17,19 @@ namespace ConsoleHelper
 
         public static string GetText(string message)
         {
-           return new TextReader().GetValue(message);
+            return new TextReader().GetValue(message);
         }
 
         public static int GetInt(string message)
         {
             return new IntegerReader().GetValue(message);
+        }
+
+        public static bool GetBool(string message)
+        {
+            string answer = GetText(message);
+
+            return answer == "y" || answer == "yes";
         }
     }
 }

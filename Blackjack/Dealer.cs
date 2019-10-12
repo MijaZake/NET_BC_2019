@@ -8,25 +8,17 @@ namespace Blackjack
 {
     public class Dealer : BasePlayer
     {
+        private const string DEALER_NAME = "Mr. Dealer";
         public override string GetName()
         {
-            return "Dealer";
+            //return dealers name (constant)
+            return DEALER_NAME;
         }
 
         public override bool WantCard()
         {
-            Random r = new Random();
-            int num = r.Next(1,2);
-
-            switch(num)
-            {
-                case 1:
-                    return true; 
-                case 2:
-                    return false;
-                default:
-                    return WantCard();
-            }
+            //if dealer has at least 17 points, return false, otherwise true
+            return CountPoints() <= 17;
         }
     }
 }
