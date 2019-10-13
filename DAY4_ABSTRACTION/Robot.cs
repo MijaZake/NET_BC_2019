@@ -7,13 +7,24 @@ using System.Threading.Tasks;
 
 namespace DAY4_ABSTRACTION
 {
+    /// <summary>
+    /// Contains all methods needed for an AI player of the game.
+    /// </summary>
     public class Robot : BasePlayer
     {
+        /// <summary>
+        /// Returns predefined name of the player.
+        /// </summary>
+        /// <returns>Name of the player.</returns>
         public override string GetName()
         {
             return "R0B0T";
         }
 
+        /// <summary>
+        /// Sleeps for 1sec, generates a random guess with range based on either the limit if it is the first guess or the remaining possible range after previous guesses. Outputs the guess.
+        /// </summary>
+        /// <returns>The current guess.</returns>
         public override int GuessNumber()
         {
             Thread.Sleep(1000);
