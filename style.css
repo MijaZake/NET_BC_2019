@@ -3,31 +3,37 @@
     color: white;
     margin: 20px;
     padding: 5px 6px 7px 8px;
-    border: 5px solid blue;
+    border: 5px dashed red;
+    font-size: 25px;
 }
 
 div {
     background: blue;
 }
 
-div.left{
+div.left {
     float: left;
     width: 20%;
 }
 
-div.right{
-    float:right;
+div.right
+{
+    float: left;
 }
 
 table {
-    border: 3px solid black;
+    border: 1px solid black;
+}
+
+table td {
+    color: red;
 }
 
 span, div {
     
 }
 
-#login{
+#login {
     background: black;
     color: white;
 }
@@ -36,7 +42,7 @@ span.blue {
     color: blue;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }
 
@@ -47,3 +53,4 @@ a {
 a:visited {
     color: violet;
 }
+

@@ -19,6 +19,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Samples", "Web Samples"
 		style.css = style.css
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.logic", "WebShop.logic\WebShop.logic.csproj", "{BB6D0ED2-73EB-42DF-88F9-B4E12D48663C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.logic.Tests", "WebShop.logic.Tests\WebShop.logic.Tests.csproj", "{D130D5D4-7945-44F6-9ACE-8B77D7EDA27E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicSample", "LogicSample\LogicSample.csproj", "{0EEBFB73-870E-4EFB-878B-934670724A43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicSample.Tests", "LogicSample.Tests\LogicSample.Tests.csproj", "{A4C0BE16-E0E4-4439-84D5-FA80EBD243C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED565877-BEF6-4645-B03F-297401A436EF}"
+	ProjectSection(SolutionItems) = preProject
+		script.js = script.js
+		shop.html = shop.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +59,22 @@ Global
 		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0329FC79-EC3F-4307-AA01-FE1D8BF002BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6D0ED2-73EB-42DF-88F9-B4E12D48663C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6D0ED2-73EB-42DF-88F9-B4E12D48663C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6D0ED2-73EB-42DF-88F9-B4E12D48663C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6D0ED2-73EB-42DF-88F9-B4E12D48663C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D130D5D4-7945-44F6-9ACE-8B77D7EDA27E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D130D5D4-7945-44F6-9ACE-8B77D7EDA27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D130D5D4-7945-44F6-9ACE-8B77D7EDA27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D130D5D4-7945-44F6-9ACE-8B77D7EDA27E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EEBFB73-870E-4EFB-878B-934670724A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EEBFB73-870E-4EFB-878B-934670724A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EEBFB73-870E-4EFB-878B-934670724A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EEBFB73-870E-4EFB-878B-934670724A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4C0BE16-E0E4-4439-84D5-FA80EBD243C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4C0BE16-E0E4-4439-84D5-FA80EBD243C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4C0BE16-E0E4-4439-84D5-FA80EBD243C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4C0BE16-E0E4-4439-84D5-FA80EBD243C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
