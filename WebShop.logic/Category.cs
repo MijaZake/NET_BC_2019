@@ -23,6 +23,6 @@ namespace WebShop.logic
         /// Virskategorijas identifikators.
         /// Ja nav definets - pamatkategorija.
         /// </summary>
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
     }
 }
