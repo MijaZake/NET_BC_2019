@@ -12,11 +12,11 @@ namespace WebShop.logic
     public class UserManager
     {
         private int currentId;
-        private List<User> Users;
+        private static List<User> Users = new List<User>();
+
 
         public UserManager()
         {
-            Users = new List<User>();
             currentId = 1;
         }
 
