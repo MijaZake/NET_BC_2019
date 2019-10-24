@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,9 +38,17 @@
                     <li><a asp-controller="Item" asp-action="Index">Items</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-controller="Account" asp-action="SignUp">Sign up</a></li>
-                    <li><a asp-controller="Account" asp-action="SignIn">Sign in</a></li>
-                    <li><a href="#">My cart</a></li>
+                    @if (Context.Session.GetUserEmail() == null)
+                    {
+                        <li><a asp-controller="Account" asp-action="SignUp">Sign up</a></li>
+                        <li><a asp-controller="Account" asp-action="SignIn">Sign in</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#">@Context.Session.GetUserEmail()</a></li>
+                        <li><a asp-controller="Account" asp-action="SignOut">Sign</a></li>
+                    }
+                    <li><a asp-controller="Item" asp-action="Basket">My basket</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

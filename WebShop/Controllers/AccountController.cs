@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebShop.logic;
 using WebShop.Models;
@@ -27,15 +28,19 @@ namespace WebShop.Controllers
             if (ModelState.IsValid)
             {
                 UserManager manager = new UserManager();
-                
-                if (manager.GetByEmailAndPassword(model.Email, model.Password) == null)
+                var user = manager.GetByEmailAndPassword(model.Email, model.Password);
+
+                if (user == null)
                 {
                     ModelState.AddModelError("error", "User not found!");
                 }
                 else
                 {
-                    TempData["message2"] = "User logged in!";
-                    return RedirectToAction("Index","Home");
+                    HttpContext.Session.SetUserId(user.Id);
+                    HttpContext.Session.SetUserEmail(user.Email);
+
+                    TempData["message"] = "User logged in!";
+                    return RedirectToAction("Index", "Item");
                 }
             }
 
@@ -72,6 +77,13 @@ namespace WebShop.Controllers
             }
 
             return View();
+        }
+
+        public IActionResult SignOut()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Īndex", "Item");
         }
     }
 }
