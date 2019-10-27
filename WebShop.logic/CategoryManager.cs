@@ -24,6 +24,15 @@ namespace WebShop.logic
             return Categories.Find(c => c.Id == id);
         }
 
+        public int ItemCount(int categoryId)
+        {
+            var manager = new ItemManager();
+            manager.Seed();
+            List<Item> Items = manager.GetByCategory(categoryId);
+            int count = Items.Count();
+
+            return count;
+        }
 
         public void Seed()
         {

@@ -5,42 +5,46 @@
 
 @TempData["message"]
 
-    <div class="col-sm-4">
-        @foreach (var bigCategory in Model.Categories.FindAll(c => !c.CategoryId.HasValue))
-        {
-        <div class="list-group">
-            <a href="#" class="list-group-item active">
-                @bigCategory.Title;
-            </a>
-            @foreach (var smallCategory in Model.Categories.FindAll(c => c.CategoryId == bigCategory.Id))
+    <div class="row">
+        <div class="col-sm-4">
+            @foreach (var bigCategory in Model.Categories.FindAll(c => !c.CategoryId.HasValue))
             {
-                <a class="list-group-item" asp-controller="Item" asp-action="Index" asp-route-id="@smallCategory.Id">@smallCategory.Title<span class="badge">0</span></a>
-            }
-        </div>
-        }
-    </div>
-<div class="col-sm-8">
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Electronics</a></li>
-        <li class="active">Mobile</li>
-    </ol>
-    <div>
-        <div class="row">
-            @foreach (var item in Model.Items)
-            {
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src=@item.Photo alt="..." />
-                        <div class="caption text-center">
-                            <h3>@item.Title</h3>
-                            <p>Price: <span>@item.Price</span></p>
-                            <p><a asp-controller="Item" asp-action="Buy" asp-route-id="@item.Id" class="btn btn-primary" role="button">Add to cart</a></p>
-                        </div>
-                    </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        @bigCategory.Title;
+                    </a>
+                    @foreach (var smallCategory in Model.Categories.FindAll(c => c.CategoryId == bigCategory.Id))
+                    {
+                        <a class="list-group-item" asp-controller="Item" asp-action="Index" asp-route-id="@smallCategory.Id">@smallCategory.Title<span class="badge">
+                        0
+                        </span></a>
+                    }
                 </div>
             }
         </div>
+        <div class="col-sm-8">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li class="active">Mobile</li>
+            </ol>
+            <div>
+                <div class="row">
+                    @foreach (var item in Model.Items)
+                    {
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src=@item.Photo alt="..." />
+                                <div class="caption text-center">
+                                    <h3>@item.Title</h3>
+                                    <p>Price: <span>@item.Price</span></p>
+                                    <p><a asp-controller="Item" asp-action="Buy" asp-route-id="@item.Id" class="btn btn-primary" role="button">Add to cart</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 

@@ -47,7 +47,11 @@ namespace WebShop.Controllers
 
             HttpContext.Session.SetUserBasket(basket);
 
-            return RedirectToAction("Index", "Item");
+            var manager = new ItemManager();
+            manager.Seed();
+            var item = manager.Get(id);
+
+            return RedirectToAction("Index", "Item", new { id = item.CategoryId });
         }
 
         public IActionResult Basket()
@@ -67,6 +71,17 @@ namespace WebShop.Controllers
             }
             //3. Atgriež preču sarakstu uz View
             return View(items);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var basket = HttpContext.Session.GetUserBasket();
+            var deleteItem = basket.Find(i => i == id);
+            basket.Remove(deleteItem);
+
+            HttpContext.Session.SetUserBasket(basket);
+
+            return RedirectToAction("Basket", "Item");
         }
     }
 }
