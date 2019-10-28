@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace WebShop.logic
+namespace Advertisements.Logic
 {
     public class CategoryManager
     {
@@ -14,6 +12,7 @@ namespace WebShop.logic
         {
             Categories = new List<Category>();
         }
+
         public List<Category> GetAll()
         {
             return Categories;
@@ -24,30 +23,41 @@ namespace WebShop.logic
             return Categories.Find(c => c.Id == id);
         }
 
-        //public int ItemCount(int categoryId)
-        //{
-        //    var manager = new ItemManager();
-        //    manager.Seed();
-        //    List<Item> Items = manager.GetByCategory(categoryId);
-        //    int count = Items.Count();
-
-        //    return count;
-        //}
-
         public void Seed()
         {
             Categories.Add(new Category()
             {
                 Id = 1,
-                Title = "Big category",
+                Title = "Category",
             });
 
             Categories.Add(new Category()
             {
                 Id = 2,
-                Title = "Small category",
+                Title = "Subcategory 1",
+                CategoryId = 1
+            });
+
+            Categories.Add(new Category()
+            {
+                Id = 3,
+                Title = "Subcategory 2",
+                CategoryId = 1
+            });
+
+            Categories.Add(new Category()
+            {
+                Id = 4,
+                Title = "Subcategory 3",
+                CategoryId = 1
+            });
+            Categories.Add(new Category()
+            {
+                Id = 5,
+                Title = "Subcategory 4",
                 CategoryId = 1
             });
         }
+    }
     }
 }

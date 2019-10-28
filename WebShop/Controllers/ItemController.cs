@@ -15,11 +15,16 @@ namespace WebShop.Controllers
         {
             var itemManager = new ItemManager();
             itemManager.Seed();
+
             var categoryManager = new CategoryManager();
             categoryManager.Seed();
 
             var items = itemManager.GetByCategory(id);
             var categories = categoryManager.GetAll();
+            foreach(var cat in categories)
+            {
+                //atlasa un uzstada precu skaitu zem konkretas kategorijas
+            }
 
             var model = new CatalogModel()
             {
@@ -81,7 +86,7 @@ namespace WebShop.Controllers
 
             HttpContext.Session.SetUserBasket(basket);
 
-            return RedirectToAction("Basket", "Item");
+            return RedirectToAction("Basket");
         }
     }
 }
