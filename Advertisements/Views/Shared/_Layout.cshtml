@@ -25,9 +25,17 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Sludinājumi</a></li>
-                    <li><a href="#">Pieslēgties</a></li>
-                    <li><a href="#">Reģistrēties</a></li>
+                    <li><a asp-controller="Advertisement" asp-action="Index">Sludinājumi</a></li>
+                    @if (Context.Session.GetUserEmail() == null)
+                    {
+                        <li><a asp-controller="Account" asp-action="SignIn">Pieslēgties</a></li>
+                        <li><a asp-controller="Account" asp-action="SignUp">Reģistrēties</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#">@Context.Session.GetUserEmail()</a></li>
+                        <li><a asp-controller="Account" asp-action="SignOut">Sign out</a></li>
+                    }
                 </ul>
             </div>
         </div>

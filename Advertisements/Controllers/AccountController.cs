@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebShop.logic;
-using WebShop.Models;
+using Advertisements.Logic;
+using Advertisements.Models;
+using Advertisements.Extensions;
 
-namespace WebShop.Controllers
+namespace Advertisements.Controllers
 {
     public class AccountController : Controller
     {
-
         public IActionResult SignIn()
         {
             return View();
@@ -26,7 +25,7 @@ namespace WebShop.Controllers
                 UserManager manager = new UserManager();
                 var user = manager.GetByEmailAndPassword(model.Email, model.Password);
 
-                if (user == null)
+                if(user == null)
                 {
                     ModelState.AddModelError("error", "User not found!");
                 }
@@ -36,10 +35,9 @@ namespace WebShop.Controllers
                     HttpContext.Session.SetUserEmail(user.Email);
 
                     TempData["message"] = "User logged in!";
-                    return RedirectToAction("Index", "Item");
+                    return RedirectToAction("Index", "Advertisement");
                 }
             }
-
             return View();
         }
 
@@ -51,7 +49,7 @@ namespace WebShop.Controllers
         [HttpPost]
         public IActionResult SignUp(UserModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 UserManager manager = new UserManager();
 
@@ -61,17 +59,16 @@ namespace WebShop.Controllers
                 }
                 else
                 {
-                    manager.Create(new logic.User()
+                    manager.Create(new Logic.User()
                     {
                         Email = model.Email,
-                        Password = model.Password,
+                        Password = model.Password
                     });
 
-                    TempData["message"] = "Account created!";
+                    TempData["message"] = "User created!";
                     return RedirectToAction("SignIn");
                 }
             }
-
             return View();
         }
 
@@ -79,7 +76,7 @@ namespace WebShop.Controllers
         {
             HttpContext.Session.Clear();
 
-            return RedirectToAction("Index", "Item");
+            return RedirectToAction("Index", "Advertisement");
         }
     }
 }
