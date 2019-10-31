@@ -1,0 +1,60 @@
+﻿@model Advertisement
+@{
+    ViewData["Title"] = "Advertisement";
+}
+
+<h2>@Model.Title</h2>
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a asp-controller="Advertisement" asp-action="Index">Sludinājumi</a></li>
+        <li><a asp-controller="Advertisement" asp-action="Category" asp-route-id="@Model.CategoryId">Kategorija</a></li>
+        <li class="active">@Model.Title</li>
+    </ol>
+
+    <div class="col-sm-4">
+        <table class="table-bordered">
+            <tr>
+                <td colspan="3">Photo 1</td>
+            </tr>
+            <tr>
+                <td>Photo 2</td>
+                <td>Photo 3</td>
+                <td>Photo 4</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-5">
+        <table class="table-condensed">
+            <tr>
+                <th class="text-right">Cena:</th>
+                <td>@Model.Price</td>
+            </tr>
+            <tr>
+                <th class="text-right">Atrašanās vieta:</th>
+                <td>@Model.Location</td>
+            </tr>
+            <tr>
+                <th class="text-right">Pievienošanas laiks:</th>
+                <td>@Model.Time</td>
+            </tr>
+
+            @if (Context.Session.GetUserEmail() != null)
+            {
+                <tr>
+                    <th class="text-right">Tālrunis:</th>
+                    <td>@Model.Phone</td>
+                </tr>
+                <tr>
+                    <th class="text-right">E-pasts:</th>
+                    <td>@Model.Email</td>
+                </tr>
+            }
+
+            <tr>
+                <th class="text-right">Apraksts: </th>
+                <td>@Model.Description</td>
+            </tr>
+        </table>
+    </div>
+</div>

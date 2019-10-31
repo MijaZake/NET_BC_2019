@@ -1,0 +1,24 @@
+﻿@model List<Advertisement>
+@{
+    ViewData["Title"] = "Category";
+}
+
+<h2>Kategorijas nosaukums</h2>
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th class="col-sm-2">Attēls</th>
+            <th class="col-sm-8">Apraksts</th>
+            <th class="col-sm-2">Cena</th>
+        </tr>
+        @foreach (Advertisement ad in Model)
+        {
+            <tr>
+                <td class="col-sm-2">@ad.Photo</td>
+                <td class="col-sm-8"><a asp-controller="Advertisement" asp-action="Advertisement" asp-route-id="@ad.Id">@ad.Description</a></td>
+                <td class="col-sm-2">@ad.Price €</td>
+            </tr>
+        }
+    </table>
+</div>
