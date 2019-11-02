@@ -8,46 +8,25 @@ namespace WebShop.logic
 {
     public class CategoryManager
     {
-        private List<Category> Categories;
+        WebShopDB _db;
 
-        public CategoryManager()
+        public CategoryManager(WebShopDB db)
         {
-            Categories = new List<Category>();
+            _db = db;
         }
         public List<Category> GetAll()
         {
-            return Categories;
+            return _db.Categories.ToList();
         }
 
         public Category Get(int id)
         {
-            return Categories.Find(c => c.Id == id);
+            return _db.Categories.FirstOrDefault(c => c.Id == id);
         }
-
-        //public int ItemCount(int categoryId)
-        //{
-        //    var manager = new ItemManager();
-        //    manager.Seed();
-        //    List<Item> Items = manager.GetByCategory(categoryId);
-        //    int count = Items.Count();
-
-        //    return count;
-        //}
 
         public void Seed()
         {
-            Categories.Add(new Category()
-            {
-                Id = 1,
-                Title = "Big category",
-            });
-
-            Categories.Add(new Category()
-            {
-                Id = 2,
-                Title = "Small category",
-                CategoryId = 1
-            });
+           
         }
     }
 }

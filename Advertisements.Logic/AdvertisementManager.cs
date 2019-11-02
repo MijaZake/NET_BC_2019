@@ -7,10 +7,12 @@ namespace Advertisements.Logic
     public class AdvertisementManager
     {
         private List<Advertisement> Advertisements;
+        private int currentId;
 
         public AdvertisementManager()
         {
             Advertisements = new List<Advertisement>();
+            currentId = 100;
         }
 
         public List<Advertisement> GetAll()
@@ -21,6 +23,21 @@ namespace Advertisements.Logic
         public Advertisement Get(int id)
         {
             return Advertisements.Find(a => a.Id == id);
+        }
+
+        public Advertisement Create(Advertisement ad)
+        {
+            ad.Id = currentId;
+            Advertisements.Add(ad);
+            currentId++;
+
+            return ad;
+        }
+
+        public void Delete(int id)
+        {
+            Advertisement ad = Advertisements.Find(a => a.Id == id);
+            Advertisements.Remove(ad);
         }
 
         public void Seed()

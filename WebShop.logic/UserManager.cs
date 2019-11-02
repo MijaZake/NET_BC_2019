@@ -11,63 +11,51 @@ namespace WebShop.logic
     /// </summary>
     public class UserManager
     {
-        private int currentId;
-        private static List<User> Users = new List<User>();
+        private WebShopDB _db;
 
 
-        public UserManager()
+        public UserManager(WebShopDB db)
         {
-            currentId = 1;
+            _db = db;
         }
 
         public User GetByEmailAndPassword(string email, string password)
         {
-            return Users.Find(u => u.Email == email && u.Password == password);
+            return _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
         }
 
         public User Create(User user)
         {
-            user.Id = currentId;
-            Users.Add(user);
-            currentId++;
+            _db.Users.Add(user);
+            _db.SaveChanges();
 
             return user;
         }
 
         public User GetByEmail(string email)
         {
-            return Users.Find(u => u.Email == email);
+            return _db.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public void Delete(int id)
         {
-            User user = Users.Find(u => u.Id == id);
-            Users.Remove(user);
+            User user = _db.Users.FirstOrDefault(u => u.Id == id);
+            _db.Users.Remove(user);
+            _db.SaveChanges();
         }
 
         public void Update(User user)
         {
-            User currentUser = Users.Find(u => u.Id == user.Id);
+            User currentUser = _db.Users.FirstOrDefault(u => u.Id == user.Id);
             // properties to update:
             currentUser.Email = user.Email;
             currentUser.Password = user.Password;
+            _db.SaveChanges();
         }
 
         public void Seed()
         {
-            Users.Add(new User()
-            {
-                Id = 1,
-                Email = "1@email.com",
-                Password = "Password1"
-            });
-
-            Users.Add(new User()
-            {
-                Id = 2,
-                Email = "2@email.com",
-                Password = "Password2"
-            });
+ 
         }
 
     }

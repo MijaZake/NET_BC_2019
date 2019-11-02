@@ -11,11 +11,11 @@
             {
                 <div class="list-group">
                     <a href="#" class="list-group-item active">
-                        @bigCategory.Title;
+                        @bigCategory.Title
                     </a>
                     @foreach (var smallCategory in Model.Categories.FindAll(c => c.CategoryId == bigCategory.Id))
                     {
-                        <a class="list-group-item" asp-controller="Item" asp-action="Index" asp-route-id="@smallCategory.Id">@smallCategory.Title<span class="badge">0</span></a>
+                        <a class="list-group-item" asp-controller="Item" asp-action="Index" asp-route-id="@smallCategory.Id">@smallCategory.Title<span class="badge">@smallCategory.ItemCount</span></a>
                     }
                 </div>
             }

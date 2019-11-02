@@ -3,7 +3,7 @@
     ViewData["Title"] = "Kategorijas";
 }
 
-@TempData["message"]
+    <p class="bg-success"> @TempData["message"]</p>
 
 <div class="container">
     <div class="row">
@@ -11,7 +11,7 @@
         {
             <div class="col-sm-12">
                 <p class="text-right">
-                    <a href="#" class="btn btn-default" role="button">Pievienot sludinājumu</a>
+                    <a asp-controller="Advertisement" asp-action="New" class="btn btn-default" role="button">Pievienot sludinājumu</a>
                 </p>
             </div>
         }

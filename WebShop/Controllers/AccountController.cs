@@ -11,6 +11,12 @@ namespace WebShop.Controllers
 {
     public class AccountController : Controller
     {
+        private UserManager _users;
+
+        public AccountController(UserManager userManager)
+        {
+            _users = userManager;
+        }
 
         public IActionResult SignIn()
         {
@@ -23,8 +29,7 @@ namespace WebShop.Controllers
             ModelState.Remove("PasswordRepeat");
             if (ModelState.IsValid)
             {
-                UserManager manager = new UserManager();
-                var user = manager.GetByEmailAndPassword(model.Email, model.Password);
+                var user = _users.GetByEmailAndPassword(model.Email, model.Password);
 
                 if (user == null)
                 {
@@ -53,15 +58,13 @@ namespace WebShop.Controllers
         {
             if(ModelState.IsValid)
             {
-                UserManager manager = new UserManager();
-
-                if (manager.GetByEmail(model.Email) != null)
+                if (_users.GetByEmail(model.Email) != null)
                 {
                     ModelState.AddModelError("error", "Email already exists!");
                 }
                 else
                 {
-                    manager.Create(new logic.User()
+                    _users.Create(new logic.User()
                     {
                         Email = model.Email,
                         Password = model.Password,

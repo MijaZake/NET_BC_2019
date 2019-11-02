@@ -11,19 +11,22 @@ namespace WebShop.Controllers
 {
     public class ItemController : Controller
     {
+        private CategoryManager _categories;
+        private ItemManager _items;
+        public ItemController(CategoryManager categoryManager, ItemManager itemManager)
+        {
+            _categories = categoryManager;
+            _items = itemManager;
+        }
+
         public IActionResult Index(int id)
         {
-            var itemManager = new ItemManager();
-            itemManager.Seed();
-
-            var categoryManager = new CategoryManager();
-            categoryManager.Seed();
-
-            var items = itemManager.GetByCategory(id);
-            var categories = categoryManager.GetAll();
+            var items = _items.GetByCategory(id);
+            var categories = _categories.GetAll();
             foreach(var cat in categories)
             {
                 //atlasa un uzstada precu skaitu zem konkretas kategorijas
+                cat.ItemCount = _items.GetByCategory(cat.Id).Count;
             }
 
             var model = new CatalogModel()
@@ -52,9 +55,7 @@ namespace WebShop.Controllers
 
             HttpContext.Session.SetUserBasket(basket);
 
-            var manager = new ItemManager();
-            manager.Seed();
-            var item = manager.Get(id);
+            var item = _items.Get(id);
 
             return RedirectToAction("Index", "Item", new { id = item.CategoryId });
         }
@@ -66,12 +67,10 @@ namespace WebShop.Controllers
             var basket = HttpContext.Session.GetUserBasket();
             if (basket != null)
             {
-                var manager = new ItemManager();
-                manager.Seed();
                 //2. Par katru preci, kas ir lietotāja sesijā atlasa tās datus un pievieno sarakstam
                 foreach (var id in basket)
                 {
-                    items.Add(manager.Get(id));
+                    items.Add(_items.Get(id));
                 }
             }
             //3. Atgriež preču sarakstu uz View
