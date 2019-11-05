@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Advertisements.Logic
@@ -7,12 +8,8 @@ namespace Advertisements.Logic
     /// <summary>
     /// Kategorijas dati
     /// </summary>
-    public class Category
+    public class Category : BaseData
     {
-        /// <summary>
-        /// Identifikators
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// Nosaukums
         /// </summary>
@@ -22,5 +19,7 @@ namespace Advertisements.Logic
         /// Ja nav definets - pamatkategorija.
         /// </summary>
         public int? CategoryId { get; set; }
+        [NotMapped]
+        public int AdvertisementCount { get; set; }
     }
 }

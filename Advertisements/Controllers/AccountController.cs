@@ -11,6 +11,15 @@ namespace Advertisements.Controllers
 {
     public class AccountController : Controller
     {
+        private UserManager _users;
+        private AdvertisementManager _advertisements;
+
+        public AccountController(UserManager userManager, AdvertisementManager advertisementManager)
+        {
+            _users = userManager;
+            _advertisements = advertisementManager;
+        }
+
         public IActionResult SignIn()
         {
             return View();
@@ -22,8 +31,7 @@ namespace Advertisements.Controllers
             ModelState.Remove("PasswordRepeat");
             if (ModelState.IsValid)
             {
-                UserManager manager = new UserManager();
-                var user = manager.GetByEmailAndPassword(model.Email, model.Password);
+                var user = _users.GetByEmailAndPassword(model.Email, model.Password);
 
                 if(user == null)
                 {
@@ -51,15 +59,13 @@ namespace Advertisements.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserManager manager = new UserManager();
-
-                if (manager.GetByEmail(model.Email) != null)
+                if (_users.GetByEmail(model.Email) != null)
                 {
                     ModelState.AddModelError("error", "Email already exists!");
                 }
                 else
                 {
-                    manager.Create(new Logic.User()
+                    _users.Create(new Logic.User()
                     {
                         Email = model.Email,
                         Password = model.Password
@@ -77,6 +83,14 @@ namespace Advertisements.Controllers
             HttpContext.Session.Clear();
 
             return RedirectToAction("Index", "Advertisement");
+        }
+
+        public IActionResult MyAdvertisements()
+        {
+            var advertisements = _advertisements.GetAll();
+            var myAdvertisements = advertisements.FindAll(a => a.Email == HttpContext.Session.GetUserEmail());
+
+            return View(myAdvertisements);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿@model CatalogModel
+﻿@model List<Advertisement>
 @{
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "MyAdvertisements";
 }
 
-<h2>@Model.Category.Title</h2>
+<h2>Mani sludinājumi</h2>
 
 <div class="container">
     <table class="table">
@@ -13,21 +13,24 @@
             <th class="col-sm-6">Apraksts</th>
             <th class="col-sm-2">Cena</th>
         </tr>
-        @if (Model.Advertisements.Count == 0)
+        @if (Model.Count == 0)
         {
-        <tr>
-            <td colspan="4" class="col-sm-12 success text-center">Šajā kategorijā nav neviena sludinājuma</td>
-         </tr>
+            <tr>
+                <td colspan="4" class="col-sm-12 success text-center">Jums nav neviena sludinājuma</td>
+            </tr>
         }
         else
         {
-            @foreach (Advertisement ad in Model.Advertisements)
+            @foreach (Advertisement ad in Model)
             {
                 <tr>
                     <td class="col-sm-2">@ad.Photo</td>
                     <td class="col-sm-2"><a asp-controller="Advertisement" asp-action="Advertisement" asp-route-id="@ad.Id">@ad.Title</a></td>
                     <td class="col-sm-6">@ad.Description</td>
                     <td class="col-sm-2">@ad.Price €</td>
+                    <td>
+                     <a asp-controller="Advertisement" asp-action="Delete" asp-route-id="@ad.Id">Remove</a>
+                     </td>
                 </tr>
             }
         }

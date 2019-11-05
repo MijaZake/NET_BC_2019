@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Advertisements.Logic\Advertisements.Logic.csproj" />
     <ProjectReference Include="..\WebShop.logic\WebShop.logic.csproj" />
   </ItemGroup>
 

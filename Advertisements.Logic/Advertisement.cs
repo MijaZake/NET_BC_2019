@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Advertisements.Logic
 {
-    public class Advertisement
+    public class Advertisement : BaseData
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public decimal Price { get; set; }
         public string Photo { get; set; }

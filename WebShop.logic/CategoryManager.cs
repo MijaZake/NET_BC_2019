@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,27 +7,26 @@ using System.Threading.Tasks;
 
 namespace WebShop.logic
 {
-    public class CategoryManager
+    public class CategoryManager : BaseManager<Category>
     {
-        WebShopDB _db;
-
         public CategoryManager(WebShopDB db)
+            : base(db)
+            {
+
+            }
+
+        protected override DbSet<Category> Table
         {
-            _db = db;
-        }
-        public List<Category> GetAll()
-        {
-            return _db.Categories.ToList();
+            get
+            {
+                return _db.Categories;
+            }
         }
 
-        public Category Get(int id)
-        {
-            return _db.Categories.FirstOrDefault(c => c.Id == id);
-        }
 
         public void Seed()
         {
-           
+
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿@model Advertisement
+﻿@model AdvertisementModel
 @{
     ViewData["Title"] = "Advertisement";
 }
 
-<h2>@Model.Title</h2>
+<h2>@Model.Advertisement.Title</h2>
 
 <div class="container">
     <ol class="breadcrumb">
         <li><a asp-controller="Advertisement" asp-action="Index">Sludinājumi</a></li>
-        <li><a asp-controller="Advertisement" asp-action="Category" asp-route-id="@Model.CategoryId">Kategorija</a></li>
-        <li class="active">@Model.Title</li>
+        <li><a asp-controller="Advertisement" asp-action="Category" asp-route-id="@Model.Advertisement.CategoryId">@Model.Category.Title</a></li>
+        <li class="active">@Model.Advertisement.Title</li>
     </ol>
 
     <div class="col-sm-4">
@@ -28,32 +28,32 @@
         <table class="table-condensed">
             <tr>
                 <th class="text-right">Cena:</th>
-                <td>@Model.Price</td>
+                <td>@Model.Advertisement.Price</td>
             </tr>
             <tr>
                 <th class="text-right">Atrašanās vieta:</th>
-                <td>@Model.Location</td>
+                <td>@Model.Advertisement.Location</td>
             </tr>
             <tr>
                 <th class="text-right">Pievienošanas laiks:</th>
-                <td>@Model.Time</td>
+                <td>@Model.Advertisement.Time</td>
             </tr>
 
             @if (Context.Session.GetUserEmail() != null)
             {
                 <tr>
                     <th class="text-right">Tālrunis:</th>
-                    <td>@Model.Phone</td>
+                    <td>@Model.Advertisement.Phone</td>
                 </tr>
                 <tr>
                     <th class="text-right">E-pasts:</th>
-                    <td>@Model.Email</td>
+                    <td>@Model.Advertisement.Email</td>
                 </tr>
             }
 
             <tr>
                 <th class="text-right">Apraksts: </th>
-                <td>@Model.Description</td>
+                <td>@Model.Advertisement.Description</td>
             </tr>
         </table>
     </div>

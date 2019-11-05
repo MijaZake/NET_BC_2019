@@ -11,28 +11,37 @@ namespace Advertisements.Controllers
 {
     public class AdvertisementController : Controller
     {
+        private CategoryManager _categories;
+        private AdvertisementManager _advertisements;
+        private AdvertisementsDB _db;
+
+        public AdvertisementController(CategoryManager categoryManager, AdvertisementManager advertisementManager, AdvertisementsDB db)
+        {
+            _categories = categoryManager;
+            _advertisements = advertisementManager;
+            _db = db;
+        }
+
         public IActionResult Index()
         {
-            var categoryManager = new CategoryManager();
-            categoryManager.Seed();
-            var categories = categoryManager.GetAll();
+            var categories = _categories.GetAll();
+            foreach (var cat in categories)
+            {
+                cat.AdvertisementCount = _advertisements.GetByCategory(cat.Id).Count;
+            }
 
             return View(categories);
         }
 
         public IActionResult Category(int id)
         {
-            var advertisementManager = new AdvertisementManager();
-            advertisementManager.Seed();
             //all advertisements
-            var advertisements = advertisementManager.GetAll();
+            var advertisements = _advertisements.GetAll();
             //if subcategory - all its advertisements added
             var categoryAdvertisements = advertisements.FindAll(a => a.CategoryId == id);
 
-            var categoryManager = new CategoryManager();
-            categoryManager.Seed();
-            var categories = categoryManager.GetAll();
-            foreach(Category cat in categories)
+            var categories = _categories.GetAll();
+            foreach (Category cat in categories)
             {
                 //finds subcategories to this category
                 if (cat.CategoryId == id)
@@ -43,26 +52,35 @@ namespace Advertisements.Controllers
                 }
             }
 
-            return View(categoryAdvertisements);
+            var model = new CatalogModel()
+            {
+                Advertisements = categoryAdvertisements,
+                Category = _categories.Get(id)
+            };
+
+            return View(model);
         }
 
         public IActionResult Advertisement(int id)
         {
-            var advertisementManager = new AdvertisementManager();
-            advertisementManager.Seed();
-            var advertisements = advertisementManager.GetAll();
+            var advertisements = _advertisements.GetAll();
             var ad = advertisements.Find(a => a.Id == id);
+            var cat = _categories.Get(ad.CategoryId);
 
-            return View(ad);
+            var model = new AdvertisementModel()
+            {
+                Advertisement = ad,
+                Category = cat
+            };
+
+            return View(model);
         }
 
         public IActionResult New()
         {
             NewModel model = new NewModel();
-            CategoryManager categoryManager = new CategoryManager();
-            categoryManager.Seed();
             model.Email = HttpContext.Session.GetUserEmail();
-            model.Categories = categoryManager.GetAll();
+            model.Categories =_categories.GetAll();
 
             return View(model);
         }
@@ -73,7 +91,6 @@ namespace Advertisements.Controllers
             if(ModelState.IsValid)
             {
                 //TODO: ieraksta saglabāšana
-                AdvertisementManager manager = new AdvertisementManager();
                 var ad = new Logic.Advertisement()
                 {
                     Title = model.Title,
@@ -82,15 +99,28 @@ namespace Advertisements.Controllers
                     Location = model.Location,
                     Phone = model.Phone,
                     Email = model.Email,
-                    Description = model.Description
+                    Description = model.Description,
+                    Time = DateTime.Now
                 };
-                manager.Create(ad);
+                _advertisements.Create(ad);
+                model.Categories = _categories.GetAll();
 
                 TempData["message"] = "Advertisement created!";
                 return RedirectToAction("Advertisement", new { id = ad.Id});
             }
 
             return View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var advertisements = _advertisements.GetAll();
+            var userAdvertisements = advertisements.FindAll(a => a.Email == HttpContext.Session.GetUserEmail()).ToList();
+            var deleteItem = userAdvertisements.Find(i => i.Id == id);
+            _advertisements.Delete(deleteItem.Id);
+            _db.SaveChanges();
+
+            return RedirectToAction("MyAdvertisements", "Account");
         }
     }
 }

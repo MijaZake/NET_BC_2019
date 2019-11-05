@@ -22,12 +22,12 @@
                 <a asp-controller="Advertisement" asp-action="Category" asp-route-id="@category.Id" class="list-group-item active">
                     @category.Title
                 </a>
-                <ul class="list-group">
+                <div class="list-group">
                     @foreach (Category subcategory in Model.FindAll(c => c.CategoryId == category.Id))
                     {
-                     <li class="list-group-item"><a asp-controller="Advertisement" asp-action="Category" asp-route-id="@subcategory.Id">@subcategory.Title<span class="badge">0</span></a></li>
+                     <a class="list-group-item" asp-controller="Advertisement" asp-action="Category" asp-route-id="@subcategory.Id">@subcategory.Title<span class="badge">@subcategory.AdvertisementCount</span></a>
                     }
-                </ul>
+                </div>
             </div>
         }
     </div>

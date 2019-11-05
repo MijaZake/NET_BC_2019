@@ -10,12 +10,8 @@ namespace WebShop.logic
     /// <summary>
     /// Kategorijas dati
     /// </summary>
-    public class Category
+    public class Category : BaseData
     {
-        /// <summary>
-        /// Identifikators
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// Nosaukums
         /// </summary>
