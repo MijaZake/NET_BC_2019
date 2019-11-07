@@ -35,9 +35,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSample", "WebSample\WebS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop", "WebShop\WebShop.csproj", "{615AA169-E0D1-47DE-82ED-E2B7289BBA35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements", "Advertisements\Advertisements.csproj", "{6F7F76A8-C8F9-4406-BF09-A935A953677D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements", "Advertisements\Advertisements.csproj", "{6F7F76A8-C8F9-4406-BF09-A935A953677D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advertisements.Logic", "Advertisements.Logic\Advertisements.Logic.csproj", "{5BB257EC-F620-4F20-97F1-D12A0F18F1C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Logic", "Advertisements.Logic\Advertisements.Logic.csproj", "{5BB257EC-F620-4F20-97F1-D12A0F18F1C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPortal.Logic", "NewsPortal.Logic\NewsPortal.Logic.csproj", "{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPortal", "NewsPortal\NewsPortal.csproj", "{7526613D-C635-40B1-8EF1-DDC9C5DC3156}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +101,14 @@ Global
 		{5BB257EC-F620-4F20-97F1-D12A0F18F1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BB257EC-F620-4F20-97F1-D12A0F18F1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BB257EC-F620-4F20-97F1-D12A0F18F1C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7526613D-C635-40B1-8EF1-DDC9C5DC3156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7526613D-C635-40B1-8EF1-DDC9C5DC3156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7526613D-C635-40B1-8EF1-DDC9C5DC3156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7526613D-C635-40B1-8EF1-DDC9C5DC3156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

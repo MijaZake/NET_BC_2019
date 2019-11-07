@@ -1,0 +1,20 @@
+﻿@model List<News>
+@{
+    ViewData["Title"] = "Jaunākās ziņas";
+}
+
+<h2>Jaunākās ziņas</h2>
+
+<div class="row">
+    @foreach (News news in Model)
+    {
+    <div class="col-sm-4">
+        <div class="thumbnail">
+            <img src=@news.Photo />
+            <div class="caption text-center">
+                <h3><a asp-controller="News" asp-action="Index" asp-route-id="@news.Id">@news.Title</a></h3>
+            </div>
+        </div>
+    </div>
+    }
+</div>
