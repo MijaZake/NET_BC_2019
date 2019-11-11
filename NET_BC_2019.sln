@@ -39,9 +39,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements", "Advertise
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advertisements.Logic", "Advertisements.Logic\Advertisements.Logic.csproj", "{5BB257EC-F620-4F20-97F1-D12A0F18F1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPortal.Logic", "NewsPortal.Logic\NewsPortal.Logic.csproj", "{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Logic", "NewsPortal.Logic\NewsPortal.Logic.csproj", "{98F1B1B4-F56C-4F49-BCCC-4FE5A46E0F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPortal", "NewsPortal\NewsPortal.csproj", "{7526613D-C635-40B1-8EF1-DDC9C5DC3156}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal", "NewsPortal\NewsPortal.csproj", "{7526613D-C635-40B1-8EF1-DDC9C5DC3156}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A00D8AB6-4543-4CFE-830F-516B57DCB335}"
+	ProjectSection(SolutionItems) = preProject
+		EmployeeDB.sql = EmployeeDB.sql
+		MyTestDB.sql = MyTestDB.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
